@@ -19,7 +19,7 @@
 
 ## phoenixpaper
 
-An SAP Fiori application.
+An SAP Fiori application [Live Preview](https://81766773trial.launchpad.cfapps.us10.hana.ondemand.com/bf5018fd-2a9c-45e5-b3a6-450b8ddca0e8.ppphoenixpaper.ppphoenixpaper-0.0.1/index.html)
 
 ![Fiori App Overview](./webapp/images/APP%20OVERVIEW.png)
 
