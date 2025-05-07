@@ -1,0 +1,126 @@
+<mvc:View controllerName="pp.phoenixpaper.controller.View1"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    
+    <Page id="_IDGenPage" title="PO Details">
+        <content>
+            <f:SimpleForm id="_IDGenSimpleForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="2"
+                columnsM="2"
+                singleContainerFullSize="false">
+
+                <f:content>
+                    <!-- Header with logo and PO Confirmation title -->
+                    <layout:HorizontalLayout id="_IDGenHorizontalLayout2" class="sapUiSmallMargin" >
+
+                     <!-- Logo SVG -->
+                     <Image id="_IDGenImage" src="images/pp.png" width="160px" height="45px" alt="Logo" />
+                     <!-- PO Confirmation title -->
+                     <Text id="_IDGenText7" text="PO Confirmation Form"  class="sapUiSmallMargin sapMH4FontSize" />
+
+                      
+                    </layout:HorizontalLayout>
+
+                    <!-- Purchase Order Number -->
+                    <Label id="_IDGenLabel3" text="PO Order Number :" />
+                    <Input id="_IDGenInput8" value="{PurchaseOrder}" editable="true" />
+
+                    <Label id="_IDGenLabel4" text="PO Creation Date :" />
+                    <DatePicker id="_IDGenDatePicker" value="{PurchaseOrderDate}" displayFormat="MM/dd/yyyy" editable="true" />
+
+                    <Label id="_IDGenLabel13" text="Vendor Code :" />
+                    <Input id="_IDGenInput17" value="{/VendorCode}" editable="true" />
+
+                    <Label id="_IDGenLabel22" text="Remark :" />
+                    <Input id="_IDGenInput18" value="{/Remark}" editable="true" />
+
+                </f:content>
+                <Button id="_IDGenButton" text="Search" press=".onFilterPO" />
+            </f:SimpleForm>
+
+            <Panel id="_IDGenPanel1" headerText="Confirmation Details"  expandable="true" expanded="true">
+                <table:Table
+                    id="_IDGenTable"
+                    visibleRowCount="5"
+                    selectionMode="None"
+                    enableColumnReordering="true">
+
+                    <table:columns>
+                        <table:Column id="_IDGenColumn18">
+                            <Label id="_IDGenLabel24" text="PO Header No" />
+                            <table:template><Text id="_IDGenText6" text="{PurchaseOrder}" /></table:template>
+                        </table:Column>
+                        <table:Column id="_IDGenColumn9">
+                            <Label id="_IDGenLabel15" text="PO Item No" />
+                            <table:template><Text id="_IDGenText" text="{PurchaseOrderItem}" /></table:template>
+                        </table:Column>
+                        <table:Column id="_IDGenColumn10">
+                            <Label id="_IDGenLabel16" text="Vendor Material Code" />
+                            <table:template><Text id="_IDGenText1" text="{Material}" /></table:template>
+                        </table:Column>
+                        <table:Column id="_IDGenColumn11">
+                            <Label id="_IDGenLabel17" text="Material No" />
+                            <table:template><Text id="_IDGenText2" text="{Material}" /></table:template>
+                        </table:Column>
+                        <table:Column id="_IDGenColumn12">
+                            <Label id="_IDGenLabel18" text="Material Name" />
+                            <table:template><Text id="_IDGenText3" text="{Material}" /></table:template>
+                        </table:Column>
+                        <table:Column id="_IDGenColumn13">
+                            <Label id="_IDGenLabel19" text="PO Quantity" />
+                            <table:template><Text id="_IDGenText4" text="{OrderQuantity}" /></table:template>
+                        </table:Column>
+                        <table:Column id="_IDGenColumn14">
+                            <Label id="_IDGenLabel20" text="Available Quantity" />
+                            <table:template><Text id="_IDGenText5" text="{AvailableQuantity}" /></table:template>
+                        </table:Column>
+                        <table:Column id="_IDGenColumn15">
+                            <Label id="_IDGenLabel21" text="Confirmation Quantity" />
+                            <table:template><Input id="_IDGenInput11" value="{ConfirmationQuantity}" type="Number" /></table:template>
+                        </table:Column>
+                        <table:Column id="_IDGenColumn16">
+                            <Label id="_IDGenLabel14" text="Confirmation Date" />
+                            <table:template><DatePicker id="_IDGenDatePicker1" value="{ConfirmationDate}" displayFormat="MM/dd/yyyy" /></table:template>
+                        </table:Column>
+                        <table:Column id="_IDGenColumn17">
+                            <Label id="_IDGenLabel23" text="Is Already Delivered" />
+                            <table:template><CheckBox id="_IDGenCheckBox" selected="{IsDelivered}" /></table:template>
+                        </table:Column>
+                    </table:columns>
+                </table:Table>
+            </Panel>
+        </content>
+
+        <footer>
+            <Toolbar id="_IDGenToolbar">
+                <ToolbarSpacer id="_IDGenToolbarSpacer" />
+                <Button id="_IDGenButton8" text="Submit" type="Emphasized" press=".onSubmit" enabled="{= !${/busy} }" />
+                <Button id="_IDGenButton9" text="Cancel" press=".onCancel" enabled="{= !${/busy} }" />
+            </Toolbar>
+        </footer>
+
+        <BusyDialog id="_IDGenBusyDialog2"
+            title="Creating Purchase Order"
+            text="Please wait..."
+            showCancelButton="true"
+            close=".onBusyDialogClose"
+            busy="{/busy}"
+            busyIndicatorDelay="0" />
+    </Page>
+</mvc:View>
